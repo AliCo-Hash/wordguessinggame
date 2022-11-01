@@ -3,11 +3,14 @@ package game;
 import java.util.Random;
 
 public class Game {
+  String word;
+
   public Game() {
-    getRandomWordFromDictionary();
+    WordChoser wChoser = new WordChoser();
+    word = wChoser.getRandomWordFromDictionary();
+
   }
 
-  public static final String[] DICTIONARY = {"MAKERS", "CANDIES", "DEVELOPER", "LONDON"};
   Integer attempts = 10;
   public static void main(String[] args) {}
 
@@ -17,10 +20,5 @@ public class Game {
       sB.replace(i, word.length(), "_");
     }
     return sB.toString();
-  }
-
-  public String getRandomWordFromDictionary() {
-    Random rnd = new Random();
-    return DICTIONARY[rnd.nextInt(DICTIONARY.length)];
   }
 }
