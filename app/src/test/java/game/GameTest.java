@@ -15,4 +15,9 @@ public class GameTest {
     String word = "MAKERS";
     assertEquals(game.getWordToGuess(word), "M_____");
   }
+  
+  @Test public void getRemainingAttempts() {
+    Game game = new Game("MAKERS");
+    assertEquals(game.attempts, Integer.valueOf(10));
+  }
 }

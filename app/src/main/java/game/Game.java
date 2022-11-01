@@ -2,6 +2,7 @@ package game;
 
 public class Game {
   public Game(String word) {}
+  Integer attempts = 10;
   public static void main(String[] args) {}
 
   public String getWordToGuess(String word) {
