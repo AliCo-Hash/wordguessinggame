@@ -3,7 +3,10 @@ package game;
 import java.util.Random;
 
 public class Game {
-  public Game(String word) {}
+  public Game() {
+    getRandomWordFromDictionary();
+  }
+
   public static final String[] DICTIONARY = {"MAKERS", "CANDIES", "DEVELOPER", "LONDON"};
   Integer attempts = 10;
   public static void main(String[] args) {}
@@ -18,6 +21,6 @@ public class Game {
 
   public String getRandomWordFromDictionary() {
     Random rnd = new Random();
-    return DICTIONARY[rnd.nextInt(DICTIONARY.length - 1)];
+    return DICTIONARY[rnd.nextInt(DICTIONARY.length)];
   }
 }
