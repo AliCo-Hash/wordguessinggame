@@ -1,15 +1,17 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Game {
   String word;
+  ArrayList<Character> guessedLetters = new ArrayList<Character>();
+  Integer attempts = 10;
 
   public Game(WordChoser choser) {
     this.word = choser.getRandomWordFromDictionary();
   }
 
-  Integer attempts = 10;
   public static void main(String[] args) {}
 
   public String getWordToGuess() {
@@ -18,5 +20,15 @@ public class Game {
       sB.replace(i, word.length(), "_");
     }
     return sB.toString();
+  }
+
+  public Boolean guessLetter(Character letter) {
+    if (this.word.indexOf(letter) != -1) {
+      guessedLetters.add(letter);
+      return true;
+    } else {
+      attempts--;
+      return false;
+    }
   }
 }
