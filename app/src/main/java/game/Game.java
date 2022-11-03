@@ -37,4 +37,12 @@ public class Game {
       return false;
     }
   }
+
+  public Boolean isGameLost() {
+    if (attempts == 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

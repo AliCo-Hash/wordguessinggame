@@ -46,4 +46,17 @@ public class GameTest {
     assertEquals(game.attempts, Integer.valueOf(9));
     assertEquals(game.getWordToGuess(), "C______");
   }
+
+  @Test public void testLoseGameWhenAttemptsIs0() {
+    WordChoser mockedChoser = mock(WordChoser.class);
+    when(mockedChoser.getRandomWordFromDictionary()).thenReturn("CANDIES");
+    Game game = new Game(mockedChoser);
+     
+    do {
+      assertEquals(game.guessLetter('Z'), false);
+    } while (game.attempts >= 1);
+
+    assertTrue("lose game when no attempts remaining",game.isGameLost());
+  }
+
 }
