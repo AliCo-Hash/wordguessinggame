@@ -33,7 +33,8 @@ public class GameTest {
     when(mockedChoser.getRandomWordFromDictionary()).thenReturn("CANDIES");
     Game game = new Game(mockedChoser);
 
-    assertEquals(game.guessLetter('A'), true);
+    assertEquals(game.guessLetter('N'), true);
+    assertEquals(game.getWordToGuess(), "C_N____");
   }
 
   @Test public void testGuessLetterIncorrectAndReduceAttemps() {
@@ -43,5 +44,6 @@ public class GameTest {
 
     assertEquals(game.guessLetter('Z'), false);
     assertEquals(game.attempts, Integer.valueOf(9));
+    assertEquals(game.getWordToGuess(), "C______");
   }
 }

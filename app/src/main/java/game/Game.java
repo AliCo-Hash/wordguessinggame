@@ -1,7 +1,6 @@
 package game;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Game {
   String word;
@@ -16,8 +15,15 @@ public class Game {
 
   public String getWordToGuess() {
     StringBuilder sB = new StringBuilder(this.word);
+
     for (int i = 1; i < word.length(); i++) {
-      sB.replace(i, word.length(), "_");
+      Character currentLetter = word.charAt(i);
+
+      if (guessedLetters.indexOf(currentLetter) != -1) {
+        sB.append(currentLetter);
+      } else {
+        sB.replace(i, word.length(), "_");
+      }
     }
     return sB.toString();
   }
