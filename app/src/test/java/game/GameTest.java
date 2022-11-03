@@ -53,10 +53,25 @@ public class GameTest {
     Game game = new Game(mockedChoser);
      
     do {
-      assertEquals(game.guessLetter('Z'), false);
+      game.guessLetter('Z');
     } while (game.attempts >= 1);
 
     assertTrue("lose game when no attempts remaining",game.isGameLost());
+  }
+
+  @Test public void testWinGame() {
+    WordChoser mockedChoser = mock(WordChoser.class);
+    when(mockedChoser.getRandomWordFromDictionary()).thenReturn("CANDIES");
+    Game game = new Game(mockedChoser);
+
+    game.guessLetter('A');
+    game.guessLetter('N');
+    game.guessLetter('D');
+    game.guessLetter('I');
+    game.guessLetter('E');
+    game.guessLetter('S');
+
+    assertTrue("Win game when all letters are correctly guessed", game.isGameWon());
   }
 
 }

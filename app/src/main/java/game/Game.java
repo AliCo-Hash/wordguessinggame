@@ -17,10 +17,9 @@ public class Game {
     StringBuilder sB = new StringBuilder(this.word);
 
     for (int i = 1; i < word.length(); i++) {
-      Character currentLetter = word.charAt(i);
 
-      if (guessedLetters.indexOf(currentLetter) != -1) {
-        sB.append(currentLetter);
+      if (guessedLetters.indexOf(word.charAt(i)) != -1) {
+        sB.replace(i, word.length(), Character.toString(word.charAt(i)));
       } else {
         sB.replace(i, word.length(), "_");
       }
@@ -40,9 +39,22 @@ public class Game {
 
   public Boolean isGameLost() {
     if (attempts == 0) {
+      System.out.println("0 attempts remaining, better luck next time");
       return true;
     } else {
       return false;
     }
   }
+
+  public Boolean isGameWon() {
+    
+    for (int i = 1 ; i < word.length() ; i++) {
+        Character letter = word.charAt(i);
+        if (guessedLetters.indexOf(letter) == -1) {
+            return false;
+        }
+    }
+
+    return true;
+}
 }
